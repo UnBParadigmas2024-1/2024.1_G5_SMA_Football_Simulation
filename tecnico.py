@@ -1,4 +1,5 @@
 from mesa import Agent
+from jogador import Jogador
 
 class Tecnico(Agent):
     def __init__(self, unique_id, model, nome):
@@ -9,7 +10,6 @@ class Tecnico(Agent):
         self.definir_estrategia()
 
     def definir_estrategia(self):
-        
         jogadores = [agent for agent in self.model.schedule.agents if isinstance(agent, Jogador)]
         for jogador in jogadores:
             if jogador.energia < 20:
