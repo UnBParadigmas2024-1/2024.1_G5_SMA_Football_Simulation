@@ -4,7 +4,7 @@ from mesa.time import RandomActivation
 from jogador import Jogador
 from bola import Bola
 from arbitro import Arbitro
-from tecnico import Tecnico  # Certifique-se de importar Tecnico
+from tecnico import Tecnico
 
 class FutebolModel(Model):
     def __init__(self, duracao_jogo):
@@ -51,3 +51,18 @@ class FutebolModel(Model):
         print(f"Tempo decorrido: {self.tempo_decorrido} minuto(s)")
         if self.tempo_decorrido >= self.duracao_jogo:
             self.running = False
+
+    def get_agent_positions(self):
+        agent_positions = {
+            "Jogador": [],
+            "Bola": [],
+            "Arbitro": []
+        }
+        for agent in self.schedule.agents:
+            if isinstance(agent, Jogador):
+                agent_positions["Jogador"].append(agent.pos)
+            elif isinstance(agent, Bola):
+                agent_positions["Bola"].append(agent.pos)
+            elif isinstance(agent, Arbitro):
+                agent_positions["Arbitro"].append(agent.pos)
+        return agent_positions
