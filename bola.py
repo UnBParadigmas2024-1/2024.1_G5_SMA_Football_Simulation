@@ -6,4 +6,8 @@ class Bola(Agent):
         self.posicao = (0, 0)
 
     def step(self):
-        pass 
+        # Movimento aleatório para testar visualização
+        possible_steps = self.model.grid.get_neighborhood(self.pos, moore=True, include_center=False)
+        new_position = self.random.choice(possible_steps)
+        self.model.grid.move_agent(self, new_position)
+
