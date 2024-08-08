@@ -16,10 +16,18 @@ class FutebolModel(Model):
         self.running = True
         self.jogo_comecou = False
         
-        # Adicionar jogadores
-        for i in range(22):
-            nome = f"Jogador_{i+1}"
-            jogador = Jogador(i, self, nome)
+        # Adicionar jogadores para dois times, logicamente dividindo pela metade o total de 22 jogadores
+        for i in range(11):
+            nome = f"Jogador_Time1_{i+1}"
+            jogador = Jogador(i, self, nome, team=1)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height)
+            self.grid.place_agent(jogador, (x, y))
+        
+        for i in range(11, 22):
+            nome = f"Jogador_Time2_{i+1}"
+            jogador = Jogador(i, self, nome, team=2)
             self.schedule.add(jogador)
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height)
@@ -54,13 +62,17 @@ class FutebolModel(Model):
 
     def get_agent_positions(self):
         agent_positions = {
-            "Jogador": [],
+            "Jogador_time1": [],
+            "Jogador_time2": [],
             "Bola": [],
             "Arbitro": []
         }
         for agent in self.schedule.agents:
             if isinstance(agent, Jogador):
-                agent_positions["Jogador"].append(agent.pos)
+                if agent.team == 1:
+                    agent_positions["Jogador_time1"].append(agent.pos)
+                else:
+                    agent_positions["Jogador_time2"].append(agent.pos)
             elif isinstance(agent, Bola):
                 agent_positions["Bola"].append(agent.pos)
             elif isinstance(agent, Arbitro):
