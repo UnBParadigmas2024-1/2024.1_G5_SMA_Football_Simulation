@@ -1,7 +1,7 @@
 from mesa import Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
-from jogador import Jogador, T1_Zagueiro, T1_Meia, T1_Atacante, T2_Zagueiro, T2_Meia, T2_Atacante
+from jogador import Jogador, T1_Goleiro, T1_Zagueiro, T1_Meia, T1_Atacante, T2_Goleiro, T2_Zagueiro, T2_Meia, T2_Atacante
 from bola import Bola
 from arbitro import Arbitro
 from tecnico import Tecnico
@@ -17,12 +17,20 @@ class FutebolModel(Model):
         self.jogo_comecou = False
         
         # Adicionar jogadores para dois times, logicamente dividindo pela metade o total de 22 jogadores
+        for i in range(0, 1):
+            nome = f"Jogador_Time1_{i+1}"
+            jogador = T1_Goleiro(i, self, nome, team=1)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height // 2)
+            self.grid.place_agent(jogador, (x, y))
+
         for i in range(1, 5):
             nome = f"Jogador_Time1_{i+1}"
             jogador = T1_Zagueiro(i, self, nome, team=1)
             self.schedule.add(jogador)
             x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height // 2)
+            y = self.random.randrange(self.grid.height // 9)
             self.grid.place_agent(jogador, (x, y))
 
         for i in range(5, 9):
@@ -39,6 +47,14 @@ class FutebolModel(Model):
             self.schedule.add(jogador)
             x = self.random.randrange(self.grid.width)
             y = self.random.randrange(self.grid.height // 2, self.grid.height)
+            self.grid.place_agent(jogador, (x, y))
+
+        for i in range(11, 12):
+            nome = f"Jogador_Time2_{i+1}"
+            jogador = T2_Goleiro(i, self, nome, team=2)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(9 * self.grid.height // 10, self.grid.height)
             self.grid.place_agent(jogador, (x, y))
         
         for i in range(12, 16):

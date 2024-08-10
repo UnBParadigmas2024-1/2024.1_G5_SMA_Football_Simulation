@@ -55,6 +55,11 @@ class Jogador(Agent):
             print(f"{self.nome} está parado. Energia restante: {self.energia}")
             self.energia += self.random.randint(1, 3)
 
+class T1_Goleiro(Jogador):
+    # Só se movimenta na área em frente ao gol
+    def move(self):
+        super().move(0, self.model.grid.height // 10)
+
 class T1_Zagueiro(Jogador):
     # Só se movimenta na metade superior do campo
     def move(self):
@@ -69,6 +74,11 @@ class T1_Atacante(Jogador):
     # Só se movimenta na metade inferior do campo
     def move(self):
         super().move(self.model.grid.height // 2, self.model.grid.height)
+
+class T2_Goleiro(Jogador):
+    ## Só se movimenta na área em frente ao gol
+    def move(self):
+        super().move(9 * self.model.grid.height // 10, self.model.grid.height)
 
 class T2_Zagueiro(Jogador):
     # Só se movimenta na metade inferior do campo
