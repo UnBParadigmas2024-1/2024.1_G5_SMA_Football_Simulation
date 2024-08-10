@@ -53,7 +53,7 @@ class FutebolModel(Model):
 
     def step(self):
         self.schedule.step()
-        self.bola.mover()  # Move the ball according to its trajectory
+        self.bola.mover()
         self.tempo_decorrido += 1
         if not self.jogo_comecou and self.tempo_decorrido > 0:
             self.jogo_comecou = True
