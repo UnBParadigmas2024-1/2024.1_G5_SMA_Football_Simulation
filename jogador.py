@@ -26,4 +26,7 @@ class Jogador(Agent):
         # Check if the Jogador is on the same position as the Bola
         bola = self.model.bola  # Assuming there's a single Bola in the model
         if new_position == bola.pos:
-            bola.mover()
+            # Generate a random direction and distance
+            direction = self.random.choice([(1, 0), (-1, 0), (0, 1), (0, -1)])  # Horizontal or Vertical moves
+            steps = self.random.randint(3, 6)  # The ball will move 3 to 6 steps in that direction
+            bola.set_trajectory(direction, steps)
