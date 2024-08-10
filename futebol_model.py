@@ -16,7 +16,7 @@ class FutebolModel(Model):
         self.running = True
         self.jogo_comecou = False
         
-        # Adicionar jogadores para dois times, logicamente dividindo pela metade o total de 22 jogadores
+        # Adicionar jogadores para dois times
         for i in range(11):
             nome = f"Jogador_Time1_{i+1}"
             jogador = Jogador(i, self, nome, team=1)
@@ -33,10 +33,10 @@ class FutebolModel(Model):
             y = self.random.randrange(self.grid.height)
             self.grid.place_agent(jogador, (x, y))
 
-        # Adicionar bola
-        bola = Bola(22, self)
-        self.schedule.add(bola)
-        self.grid.place_agent(bola, (10, 10))
+        # Adicionar bola e definir como atributo da classe
+        self.bola = Bola(22, self)
+        self.schedule.add(self.bola)
+        self.grid.place_agent(self.bola, (10, 10))
         
         # Adicionar árbitro
         arbitro = Arbitro(23, self, "Árbitro Principal")
