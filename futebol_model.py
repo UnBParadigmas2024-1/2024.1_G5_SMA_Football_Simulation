@@ -17,6 +17,7 @@ class FutebolModel(Model):
         self.jogo_comecou = False
         
         # Adicionar jogadores para dois times, logicamente dividindo pela metade o total de 22 jogadores
+        # Cada time é composto por 1 Goleiro, 4 Zagueiros, 4 Meias e 2 Atacantes (4-4-2)
         for i in range(0, 1):
             nome = f"Jogador_Time1_{i+1}"
             jogador = T1_Goleiro(i, self, nome, team=1)

@@ -24,12 +24,7 @@ class Jogador(Agent):
         print(f"{self.nome} está correndo. Energia restante: {self.energia}")
         self.energia -= self.random.randint(1, 3)
 
-    def move(self, allowed_y_min, allowed_y_max):
-        if not self.model.running:  
-            print(f"{self.nome} está parado. Energia restante: {self.energia}")
-            self.energia += self.random.randint(1, 3)
-            return 
-        
+    def move(self, allowed_y_min, allowed_y_max):   
         x, y = self.pos
         direction = self.random.choice(['up', 'down', 'left', 'right'])
 
@@ -50,7 +45,7 @@ class Jogador(Agent):
             self.pos = (new_x, new_y)
             print(f"{self.nome} está correndo. Energia restante: {self.energia}")
             self.energia -= self.random.randint(1, 3)
-        # Regenera energia caso não se mova
+        # Regenera energia caso não se mova e energia estiver abaixo de 90
         elif (self.energia < 90):
             print(f"{self.nome} está parado. Energia restante: {self.energia}")
             self.energia += self.random.randint(1, 3)
