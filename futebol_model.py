@@ -1,7 +1,7 @@
 from mesa import Model
 from mesa.space import MultiGrid
 from mesa.time import RandomActivation
-from jogador import Jogador
+from jogador import Jogador, T1_Zagueiro, T1_Meia, T1_Atacante, T2_Zagueiro, T2_Meia, T2_Atacante
 from bola import Bola
 from arbitro import Arbitro
 from tecnico import Tecnico
@@ -9,7 +9,7 @@ from tecnico import Tecnico
 class FutebolModel(Model):
     def __init__(self, duracao_jogo):
         super().__init__()
-        self.grid = MultiGrid(20, 20, True)
+        self.grid = MultiGrid(70, 100, True)
         self.schedule = RandomActivation(self)
         self.tempo_decorrido = 0
         self.duracao_jogo = duracao_jogo
@@ -17,31 +17,63 @@ class FutebolModel(Model):
         self.jogo_comecou = False
         
         # Adicionar jogadores para dois times, logicamente dividindo pela metade o total de 22 jogadores
-        for i in range(11):
+        for i in range(1, 5):
             nome = f"Jogador_Time1_{i+1}"
-            jogador = Jogador(i, self, nome, team=1)
+            jogador = T1_Zagueiro(i, self, nome, team=1)
             self.schedule.add(jogador)
             x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height)
+            y = self.random.randrange(self.grid.height // 2)
+            self.grid.place_agent(jogador, (x, y))
+
+        for i in range(5, 9):
+            nome = f"Jogador_Time1_{i+1}"
+            jogador = T1_Meia(i, self, nome, team=1)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height // 4, 3 * self.grid.height // 4)
+            self.grid.place_agent(jogador, (x, y))
+
+        for i in range(9, 11):
+            nome = f"Jogador_Time1_{i+1}"
+            jogador = T1_Atacante(i, self, nome, team=1)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height // 2, self.grid.height)
             self.grid.place_agent(jogador, (x, y))
         
-        for i in range(11, 22):
+        for i in range(12, 16):
             nome = f"Jogador_Time2_{i+1}"
-            jogador = Jogador(i, self, nome, team=2)
+            jogador = T2_Zagueiro(i, self, nome, team=2)
             self.schedule.add(jogador)
             x = self.random.randrange(self.grid.width)
-            y = self.random.randrange(self.grid.height)
+            y = self.random.randrange(self.grid.height // 2, self.grid.height)
+            self.grid.place_agent(jogador, (x, y))
+
+        for i in range(16, 20):
+            nome = f"Jogador_Time2_{i+1}"
+            jogador = T2_Meia(i, self, nome, team=2)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height // 4, 3 * self.grid.height // 4)
+            self.grid.place_agent(jogador, (x, y))
+
+        for i in range(20, 2):
+            nome = f"Jogador_Time2_{i+1}"
+            jogador = T2_Atacante(i, self, nome, team=2)
+            self.schedule.add(jogador)
+            x = self.random.randrange(self.grid.width)
+            y = self.random.randrange(self.grid.height // 2)
             self.grid.place_agent(jogador, (x, y))
 
         # Adicionar bola
         bola = Bola(22, self)
         self.schedule.add(bola)
-        self.grid.place_agent(bola, (10, 10))
+        self.grid.place_agent(bola, (35, 50))
         
         # Adicionar árbitro
         arbitro = Arbitro(23, self, "Árbitro Principal")
         self.schedule.add(arbitro)
-        self.grid.place_agent(arbitro, (0, 0))
+        self.grid.place_agent(arbitro, (69, 50))
 
         # Adicionar técnicos
         tecnico1 = Tecnico(24, self, "Técnico Time 1")

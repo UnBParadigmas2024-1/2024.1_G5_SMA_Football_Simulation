@@ -25,7 +25,7 @@ def plot_positions(ax, model):
 
     for pos in agent_positions["Arbitro"]:
         x, y = pos
-        ax.scatter(x, y, c='red', marker='s', label='Arbitro')
+        ax.scatter(x, y, c='green', marker='s', label='Arbitro')
 
    
 
@@ -39,7 +39,7 @@ def main():
     model = FutebolModel(duracao_jogo)
     
     plt.ion()  # Modo interativo ligado
-    fig, ax = plt.subplots(figsize=(10, 10))
+    fig, ax = plt.subplots(figsize=(7, 10))
     
     def on_close(event):
         model.running = False
