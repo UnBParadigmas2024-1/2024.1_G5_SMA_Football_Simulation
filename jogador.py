@@ -69,7 +69,7 @@ class T1_Meia(Jogador):
 class T1_Atacante(Jogador):
     # Só se movimenta na metade inferior do campo
     def move(self):
-        super().move(self.model.grid.height // 2, self.model.grid.height)
+        super().move(0, self.model.grid.height // 2)
 
 class T2_Goleiro(Jogador):
     ## Só se movimenta na área em frente ao gol
@@ -89,4 +89,6 @@ class T2_Meia(Jogador):
 class T2_Atacante(Jogador):
     # Só se movimenta na metade superior do campo
     def move(self):
-        super().move(0, self.model.grid.height // 2)
+        super().move(self.model.grid.height // 2, self.model.grid.height)
+
+        
