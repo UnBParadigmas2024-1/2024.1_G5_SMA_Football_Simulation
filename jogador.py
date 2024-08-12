@@ -1,4 +1,5 @@
-
+from futebol_model import FutebolModel
+from bola import Bola
 import random
 from mesa import Agent
 
@@ -24,17 +25,35 @@ class Jogador(Agent):
         print(f"{self.nome} está correndo. Energia restante: {self.energia}")
         self.energia -= self.random.randint(1, 3)
 
-    def move(self, allowed_y_min, allowed_y_max):   
-        x, y = self.pos
-        direction = self.random.choice(['up', 'down', 'left', 'right'])
+    def direction(self, player_type):
+        agents_position = FutebolModel.get_agent_positions()
+        if player_type == "Jogador_T1_atacante" or player_type == "Jogador_T2_atacante" or player_type == "Jogador_T1_goleiro" or player_type == "Jogador_T2_goleiro" or player_type == "Jogador_T1_zagueiro" or player_type == "Jogador_T2_zagueiro":
+            if Bola.posicao[0] >= self.pos[0]:
+                if Bola.posicao[1] >= self.pos[1]:
+                    direction = ['up', 'right']
+                else:
+                    direction = ['down', 'right']
+            elif Bola.posicao[0] < self.pos[0]:
+                if Bola.posicao[0] < self.pos[0]:
+                    direction = ['down', 'left']
+                else:
+                    direction = ['up', 'left']
 
-        if direction == 'up':
+        # elif player_type == "Jogador_T1_meia" or player_type == "Jogador_T2_meia":
+            
+        return direction
+
+    def move(self, allowed_y_min, allowed_y_max, direction):   
+        x, y = self.pos
+        direction_sel = direction[random.randint(0, 1)]
+
+        if direction_sel == 'up':
             new_x, new_y = x, y + 5
-        elif direction == 'down':
+        elif direction_sel == 'down':
             new_x, new_y = x, y - 5
-        elif direction == 'left':
+        elif direction_sel == 'left':
             new_x, new_y = x - 5, y
-        elif direction == 'right':
+        elif direction_sel == 'right':
             new_x, new_y = x + 5, y
 
         # Checa se a nova posição está dentro da área permitida
