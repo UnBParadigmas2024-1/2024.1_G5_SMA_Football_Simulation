@@ -1,31 +1,23 @@
-# RepositorioTemplate
-Esse repositório é para ser utilizado pelos grupos como um template inicial, da home page do Projeto.
-As seções do Template NÃO DEVEM SER OMITIDAS, sendo TODAS RELEVANTES.
+# Football Simulation
 
-**!! *Atenção: Renomeie o seu repositório para (Ano.Semestre)_(Grupo)_(Paradigma)_(NomeDoProjeto)*. !!** 
-
-Paradigmas:
- - Funcional
- - Logico
- - SMA
-
-**!! *Não coloque os nomes dos alunos no título do repositório*. !!**
-
-**!! *Exemplo de título correto: 2023.2_G1_Logico_ProjetoRoteirosAereos*. !!**
- 
- (Apague esses comentários)
-
-# NomeDoProjeto
-
+Paradigma:
+ - SMA - Sistema Multiagente
+   
 **Disciplina**: FGA0210 - PARADIGMAS DE PROGRAMAÇÃO - T01 <br>
-**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: XX<br>
-**Paradigma**: XXXXXXXXXX<br>
+**Nro do Grupo (de acordo com a Planilha de Divisão dos Grupos)**: 05<br>
+**Paradigma**: SMA - Sistema Multiagente<br>
 
 ## Alunos
 |Matrícula | Aluno |
 | -- | -- |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
-| xx/xxxxxx  |  xxxx xxxx xxxxx |
+| 19/0113596  |  Charles Manrique Serafim Morais |
+| 19/0045485  |  Eduardo Gurgel Pereira de Carvalho |
+| 19/0125829  |  Ian da Costa Gama |
+| 19/0134623  |  Marcos Diego da Silva Gomes |
+| 19/0058587  |  Matheus Raphael Soares de Oliveira |
+| 14/0158278  |  Pedro Helias Carlos  |
+| 21/1006957  |  Sebastián Héctor Zuzunaga Rosado  |
+| 19/0117508  |  Thiago Cerqueira Borges  |
 
 ## Sobre 
 Descreva o seu projeto em linhas gerais. 
@@ -58,10 +50,16 @@ OBS: TODOS DEVEM PARTICIPAR, CONFERINDO PONTOS DE VISTA.
 TEMPO: +/- 15min
 
 ## Participações
-Apresente, brevemente, como cada membro do grupo contribuiu para o projeto.
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
-| Fulano  |  Programação dos Fatos da Base de Conhecimento Lógica | Boa |
+| Charles Manrique Serafim Morais | Não atuou | Nula |
+| Eduardo Gurgel Pereira de Carvalho |  |  |
+| Ian da Costa Gama | | |
+| Marcos Diego da Silva Gomes | Divisão de Jogadores em posições, formação, posicionamento e movimentação de cada time | Boa |
+| Matheus Raphael Soares de Oliveira  |  |  |
+| Pedro Helias Carlos |  |  |
+| Sebastián Héctor Zuzunaga Rosado |  |  |
+| Thiago Cerqueira Borges |  |  |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
