@@ -1,4 +1,4 @@
-from futebol_model import FutebolModel
+# from futebol_model import FutebolModel
 from bola import Bola
 import random
 from mesa import Agent
@@ -26,7 +26,7 @@ class Jogador(Agent):
         self.energia -= self.random.randint(1, 3)
 
     def direction(self, player_type):
-        agents_position = FutebolModel.get_agent_positions()
+        # agents_position = FutebolModel.get_agent_positions()
         if player_type == "Jogador_T1_atacante" or player_type == "Jogador_T2_atacante" or player_type == "Jogador_T1_goleiro" or player_type == "Jogador_T2_goleiro" or player_type == "Jogador_T1_zagueiro" or player_type == "Jogador_T2_zagueiro":
             if Bola.posicao[0] >= self.pos[0]:
                 if Bola.posicao[1] >= self.pos[1]:
@@ -39,7 +39,8 @@ class Jogador(Agent):
                 else:
                     direction = ['up', 'left']
 
-        # elif player_type == "Jogador_T1_meia" or player_type == "Jogador_T2_meia":
+        # elif player_type == "Jogador_T1_meia":
+            # if sum(agents_position["Jogador_T2_atacante"])/len(agents_position["Jogador_T2_atacante"]) > :
             
         return direction
 
@@ -72,40 +73,39 @@ class Jogador(Agent):
 class T1_Goleiro(Jogador):
     # Só se movimenta na área em frente ao gol
     def move(self):
-        super().move(0, self.model.grid.height // 15)
+        super().move(0, self.model.grid.height // 15, self.direction("Jogador_T1_goleiro"))
         #print("teste")
 
 class T1_Zagueiro(Jogador):
     # Só se movimenta na metade superior do campo
     def move(self):
-        super().move(0, self.model.grid.height // 2)
+        super().move(0, self.model.grid.height // 2, self.direction("Jogador_T1_zagueiro"))
 
 class T1_Meia(Jogador):
     # Só se movimenta na metade central do campo
     def move(self):
-        super().move(self.model.grid.height // 4, 3 * self.model.grid.height // 4)
-
+        super().move(self.model.grid.height // 4, 3 * self.model.grid.height // 4, self.direction("Jogador_T1_meia"))
 class T1_Atacante(Jogador):
     # Só se movimenta na metade inferior do campo
     def move(self):
-        super().move(self.model.grid.height // 2, self.model.grid.height)
+        super().move(self.model.grid.height // 2, self.model.grid.height, self.direction("Jogador_T1_atacante"))
 
 class T2_Goleiro(Jogador):
     ## Só se movimenta na área em frente ao gol
     def move(self):
-        super().move(14 * self.model.grid.height // 15, self.model.grid.height)
+        super().move(14 * self.model.grid.height // 15, self.model.grid.height, self.direction("Jogador_T2_goleiro"))
 
 class T2_Zagueiro(Jogador):
     # Só se movimenta na metade inferior do campo
     def move(self):
-        super().move(self.model.grid.height // 2, self.model.grid.height)
+        super().move(self.model.grid.height // 2, self.model.grid.height, self.direction("Jogador_T2_zagueiro"))
 
 class T2_Meia(Jogador):
     # Só se movimenta na metade central do campo
     def move(self):
-        super().move(self.model.grid.height // 4, 3 * self.model.grid.height // 4)
+        super().move(self.model.grid.height // 4, 3 * self.model.grid.height // 4, self.direction("Jogador_T2_meia"))
 
 class T2_Atacante(Jogador):
     # Só se movimenta na metade superior do campo
     def move(self):
-        super().move(0, self.model.grid.height // 2)
+        super().move(0, self.model.grid.height // 2, self.direction("Jogador_T2_atacante"))
