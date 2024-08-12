@@ -10,18 +10,52 @@ def plot_positions(ax, model):
     
     ax.set_xlim(0, model.grid.width)
     ax.set_ylim(0, model.grid.height)
-    
-    for pos in agent_positions["Jogador_time1"]:
+
+    for pos in agent_positions["Jogador_T1_goleiro"]:
+        x, y = pos
+        ax.scatter(x, y, c='magenta', marker="D", label='Jogador Time 1')
+        ax.text(x, y+1, 'Goleiro_1', fontsize=8, ha='center')
+        
+    for pos in agent_positions["Jogador_T2_goleiro"]:
+        x, y = pos
+        ax.scatter(x, y, c='purple', marker="D", label='Jogador Time 1')
+        ax.text(x, y+1, 'Goleiro_2', fontsize=8, ha='center')
+
+    for pos in agent_positions["Jogador_T1_zagueiro"]:
         x, y = pos
         ax.scatter(x, y, c='blue', marker='o', label='Jogador Time 1')
+        ax.text(x, y+1, 'T1_zagueiro', fontsize=8, ha='center')
+    
+    for pos in agent_positions["Jogador_T1_meia"]:
+        x, y = pos
+        ax.scatter(x, y, c='blue', marker='o', label='Jogador Time 1')
+        ax.text(x, y+1, 'T1_meia', fontsize=8, ha='center')
+        
+    for pos in agent_positions["Jogador_T1_atacante"]:
+        x, y = pos
+        ax.scatter(x, y, c='blue', marker='o', label='Jogador Time 1')
+        ax.text(x, y+1, 'T1_atacante', fontsize=8, ha='center')
+    
 
-    for pos in agent_positions["Jogador_time2"]:
+    for pos in agent_positions["Jogador_T2_zagueiro"]:
         x, y = pos
         ax.scatter(x, y, c='red', marker='o', label='Jogador Time 2')
+        ax.text(x, y+1, 'T2_zagueiro', fontsize=8, ha='center')
+
+    for pos in agent_positions["Jogador_T2_meia"]:
+        x, y = pos
+        ax.scatter(x, y, c='red', marker='o', label='Jogador Time 2')
+        ax.text(x, y+1, 'T2_meia', fontsize=8, ha='center')
+
+    for pos in agent_positions["Jogador_T2_atacante"]:
+        x, y = pos
+        ax.scatter(x, y, c='red', marker='o', label='Jogador Time 2')
+        ax.text(x, y+1, 'T2_atacante', fontsize=8, ha='center')
 
     for pos in agent_positions["Bola"]:
         x, y = pos
         ax.scatter(x, y, c='black', marker='x', label='Bola')
+        ax.text(x, y+1, 'Bola', fontsize=8, ha='center')
 
     for pos in agent_positions["Arbitro"]:
         x, y = pos
