@@ -57,7 +57,7 @@ TEMPO: +/- 15min
 | Ian da Costa Gama | | |
 | Marcos Diego da Silva Gomes | Divisão de Jogadores em posições, formação, posicionamento e movimentação de cada time | Boa |
 | Matheus Raphael Soares de Oliveira  |  |  |
-| Pedro Helias Carlos |  |  |
+| Pedro Helias Carlos | Divisão em dois times, rotulação e melhorias no posicionamento. Divisão do posicionamento de cada jogador no campo. Junção dos códigos criados | Ótima  |
 | Sebastián Héctor Zuzunaga Rosado |  |  |
 | Thiago Cerqueira Borges |  |  |
 
