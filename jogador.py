@@ -1,4 +1,4 @@
-# from futebol_model import FutebolModel
+from futebol_model import FutebolModel
 from bola import Bola
 import random
 from mesa import Agent
@@ -26,7 +26,7 @@ class Jogador(Agent):
         self.energia -= self.random.randint(1, 3)
 
     def direction(self, player_type):
-        # agents_position = FutebolModel.get_agent_positions()
+        agents_position = FutebolModel.get_agent_positions()
         if player_type == "Jogador_T1_atacante" or player_type == "Jogador_T2_atacante" or player_type == "Jogador_T1_goleiro" or player_type == "Jogador_T2_goleiro" or player_type == "Jogador_T1_zagueiro" or player_type == "Jogador_T2_zagueiro":
             if Bola.posicao[0] >= self.pos[0]:
                 if Bola.posicao[1] >= self.pos[1]:
@@ -39,9 +39,46 @@ class Jogador(Agent):
                 else:
                     direction = ['up', 'left']
 
-        # elif player_type == "Jogador_T1_meia":
-            # if sum(agents_position["Jogador_T2_atacante"])/len(agents_position["Jogador_T2_atacante"]) > :
-            
+        elif player_type == "Jogador_T1_meia":
+            x = 0
+            y = 0
+            for pos in agents_position["Jogador_T2_atacante"]:
+                x_2, y_2 = pos
+                x += x_2
+                y += y_2
+
+            if x >= self.pos[0]:
+                if y >= self.pos[1]:
+                    direction = ['up', 'right']
+                else:
+                    direction = ['down', 'right']
+
+            if x < self.pos[0]:
+                if y < self.pos[1]:
+                    direction = ['down', 'left']
+                else:
+                    direction = ['up', 'left']
+
+        elif player_type == "Jogador_T2_meia":
+            x = 0
+            y = 0
+            for pos in agents_position["Jogador_T1_atacante"]:
+                x_2, y_2 = pos
+                x += x_2
+                y += y_2
+
+            if x >= self.pos[0]:
+                if y >= self.pos[1]:
+                    direction = ['up', 'right']
+                else:
+                    direction = ['down', 'right']
+
+            if x < self.pos[0]:
+                if y < self.pos[1]:
+                    direction = ['down', 'left']
+                else:
+                    direction = ['up', 'left']
+
         return direction
 
     def move(self, allowed_y_min, allowed_y_max, direction):   
