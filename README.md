@@ -53,7 +53,7 @@ TEMPO: +/- 15min
 |Nome do Membro | Contribuição | Significância da Contribuição para o Projeto (Excelente/Boa/Regular/Ruim/Nula) |
 | -- | -- | -- |
 | Charles Manrique Serafim Morais | Não atuou | Nula |
-| Eduardo Gurgel Pereira de Carvalho |  |  |
+| Eduardo Gurgel Pereira de Carvalho | Foi adicionada a parte da visualização e movimentação dos jogadores e da bola. Foi implementado o agente Técnico, responsável por substituir os jogadores com energia baixa. A movimentação foi visualizada utilizando a biblioteca Matplotlib.  | Boa |
 | Ian da Costa Gama | | |
 | Marcos Diego da Silva Gomes | Divisão de Jogadores em posições, formação, posicionamento e movimentação de cada time | Boa |
 | Matheus Raphael Soares de Oliveira  | Ajuste na movimentação dos jogadores, para que eles se mexam no campo de forma mais organizada. Atacantes, zagueiros e goleiros vão atrás da bola, e meias vão atrás dos atacantes inimigos | Boa |
