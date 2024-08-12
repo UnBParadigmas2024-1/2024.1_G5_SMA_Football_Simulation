@@ -59,7 +59,7 @@ TEMPO: +/- 15min
 | Matheus Raphael Soares de Oliveira  |  |  |
 | Pedro Helias Carlos | Divisão em dois times, rotulação e melhorias no posicionamento. Divisão do posicionamento de cada jogador no campo. Junção dos códigos criados | Ótima  |
 | Sebastián Héctor Zuzunaga Rosado |  |  |
-| Thiago Cerqueira Borges |  |  |
+| Thiago Cerqueira Borges | Minha contribuição no trabalho consistiu em iniciar os scripts, idealizando os agentes e criando-os, além de definir o tempo de partida, o início e fim de partida, e a lógica de custo de energia para o sistema assim como as configurações de execução e partida. | Boa |
 
 ## Outros 
 Quaisquer outras informações sobre o projeto podem ser descritas aqui. Não esqueça, entretanto, de informar sobre:
